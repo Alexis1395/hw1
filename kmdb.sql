@@ -173,3 +173,5 @@ SELECT * FROM movies;
 
 -- The SQL statement for the cast output
 SELECT * FROM movie_stars;
+
+
