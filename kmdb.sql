@@ -111,14 +111,50 @@
 .headers off
 
 -- Drop existing tables, so you'll start fresh each time this script is run.
--- TODO!
+DROP TABLE IF EXISTS KMDB;
+DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS movie_stars;
 
 -- Create new tables, according to your domain model
--- TODO!
+CREATE TABLE movies (
+    id INT,
+    title TEXT, 
+    year_released INT,
+    MPAA_rate TEXT,
+    studio TEXT
+);
+
+CREATE TABLE movie_stars (
+    movie_id INT,
+    title TEXT, 
+    top_cast TEXT, 
+    character TEXT
+);
 
 -- Insert data into your database that reflects the sample data shown above
 -- Use hard-coded foreign key IDs when necessary
--- TODO!
+INSERT INTO movies(id, title, year_released,MPAA_rate,studio) 
+    VALUES (1, 'Batman Begins', 2005,'PG-13','Warner Bros.'),
+           (2, 'The Dark Knight', 2008,'PG-13','Warner Bros.'),
+           (3, 'The Dark Kight Rises', 2012,'PG-13','Warner Bros.'); 
+
+INSERT INTO movie_stars(movie_id, title, top_cast, character)
+    VALUES (1, 'Batman Begins','Christian Bale','Bruce Wayne'),
+            (1, 'Batman Begins','Michael Caine','Alfred'),
+            (1, 'Batman Begins','Liam Neeson',"Ra's Al Ghul"),
+            (1, 'Batman Begins','Katie Holmes','Rachel Dawes'),
+            (1, 'Batman Begins','Gary Oldman','Commissioner Gordon'),
+            (2, 'The Dark Knight','Christian Bale','Bruce Wayne'),
+            (2, 'The Dark Knight','Heath Ledger','Joker'),
+            (2, 'The Dark Knight','Aeron Eckhart','Harvey Dent'),
+            (2, 'The Dark Knight','Michael Caine','Alfred'),
+            (2, 'The Dark Knight','Maggie Gyllenhaal','Rachel Dawes'),
+            (3, 'The Dark Knight Rises','Christian Bale','Bruce Wayne'),
+            (3, 'The Dark Knight Rises','Gary Oldman','Commissioner Gordon'),
+            (3, 'The Dark Knight Rises','Tom Hardy','Bane'),
+            (3, 'The Dark Knight Rises','Joseph Gordon-Levitt','John Blake'),
+            (3, 'The Dark Knight Rises','Anne Hathaway','Selina Kyle');
+
 
 -- Prints a header for the movies output
 .print "Movies"
@@ -126,7 +162,7 @@
 .print ""
 
 -- The SQL statement for the movies output
--- TODO!
+SELECT * FROM movies;
 
 -- Prints a header for the cast output
 .print ""
@@ -136,4 +172,4 @@
 
 
 -- The SQL statement for the cast output
--- TODO!
+SELECT * FROM movie_stars;
